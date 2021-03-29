@@ -1,6 +1,6 @@
 class Enemy < Character
     belongs_to :user
-    belonts_to :table
+    belonts_to :campaign
     # has_many :enemy_items
     # has_many :items, through: :enemy_items
     has_many :encounters
