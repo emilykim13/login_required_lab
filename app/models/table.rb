@@ -1,4 +1,4 @@
 class Table < ApplicationRecord
-    belongs_to :character
-    belongs_to :dungeon_master
+    has_many :characters
+    has_many :enemies
 end
