@@ -6,4 +6,7 @@ class User < ApplicationRecord
     
     has_many :tables, through: :characters
     has_many :tables, through: :enemies
+
+
+
 end
