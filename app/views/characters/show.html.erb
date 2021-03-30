@@ -1,0 +1,16 @@
+<h1> <%= @character.name %> </h1> 
+<h1> <%= @character.current_hp%> / <%= @character.max_hp %> </h1>
+<h4> Armor Class: <%= @character.armor_rating %> Total Experiance: <%= @character.experience %> </h4>
+<%= button_to "Edit Character", @character, method: 'edit' %> <%= button_to "Delete Character", @character, method: 'delete' %>
+<hr>
+<h2> Attributes </h2>
+<h3> Strength: <%= @character.strength %></h3>
+<h3> Dexterity: <%= @character.dexterity %></h3>
+<h3> Constitution: <%= @character.constitution %></h3>
+<h3> Intellegence: <%= @character.intelligence %></h3>
+<h3> Wisdom: <%= @character.wisdom %></h3>
+<h3> Charisma: <%= @character.charisma %></h3>
+<hr>
+
+
+

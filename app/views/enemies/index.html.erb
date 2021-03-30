@@ -1,0 +1,7 @@
+<h1> Enemy Index </h1>
+
+<ul>
+    <% @enemies.each do |enemy| %>
+       <li> <%= link_to enemy.name, enemy %> </li>
+    <% end %>
+</ul>

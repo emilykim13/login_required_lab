@@ -1,0 +1,33 @@
+<%= form_for @enemy do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %> <br><br>
+    <%= f.label :strength %>
+    <%= f.number_field :strength %> <br><br>
+    <%= f.label :dexterity %>
+    <%= f.number_field :dexterity %> <br><br>
+    <%= f.label :constitution %>
+    <%= f.number_field :constitution %> <br><br>
+    <%= f.label :intelligence %>
+    <%= f.number_field :intelligence %> <br><br>
+    <%= f.label :wisdom %>
+    <%= f.number_field :wisdom %> <br><br>
+    <%= f.label :charisma %>
+    <%= f.number_field :charisma %> <br><br>
+    <%= f.label :armor_rating %>
+    <%= f.number_field :armor_rating %> <br><br>
+    <%= f.label :challenge_rating %>
+    <%= f.number_field :challenge_rating %> <br><br>
+    <%= f.label :max_hp %>
+    <%= f.number_field :max_hp %> <br><br>
+    <%= f.label :current_hp %>
+    <%= f.number_field :current_hp %> <br><br>
+    <%= f.label :experience_value %>
+    <%= f.number_field :experience_value%> <br><br>
+    <%= f.label :user_id %>
+    <%= f.collection_select :user_id , User.all, :id, :username%> <br><br>
+    <%= f.label :campaign_id %>
+    <%= f.collection_select :campaign_id, Campaign.all, :id, :title %> <br><br>
+    <%= f.submit %>
+<% end %>
+
+
