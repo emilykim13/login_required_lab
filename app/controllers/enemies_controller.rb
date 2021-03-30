@@ -1,5 +1,5 @@
 class EnemiesController < ApplicationController
-    before_action :find_enemy, only [:show, :edit, :update]
+    before_action :find_enemy, only: [:show, :edit, :update, :destroy]
 
     def index
         @enemies = Enemy.all
@@ -17,8 +17,13 @@ class EnemiesController < ApplicationController
 
     def update
         @enemy.update(enemy_params)
+        redirect_to @enemy
     end
 
+    def destroy
+        @enemy.delete 
+        redirect_to '/'
+    end
 
     private 
 
@@ -27,7 +32,7 @@ class EnemiesController < ApplicationController
         end
 
         def enemy_params
-            params.require(:enemy).permit(:strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :armor_rating, :challenge_rating, :max_hp, :current_hp, :experience_value)
+            params.require(:enemy).permit(:name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :armor_rating, :challenge_rating, :max_hp, :current_hp, :experience_value, :user_id, :campaign_id)
         end
 
 end

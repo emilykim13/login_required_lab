@@ -13,6 +13,8 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.integer :current_hp
       t.integer :temporary_hp
       t.integer :experience
+      t.integer :user_id
+      t.integer :campaign_id
 
       t.timestamps
     end

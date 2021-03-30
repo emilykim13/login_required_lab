@@ -1,6 +1,6 @@
-class Enemy < Character
+class Enemy < ApplicationRecord
     belongs_to :user
-    belonts_to :campaign
+    belongs_to :campaign
     # has_many :enemy_items
     # has_many :items, through: :enemy_items
     has_many :encounters
