@@ -36,12 +36,12 @@ class CharactersController < ApplicationController
 
     private 
 
-        def find_character
-            @character = Character.find(params[:id])
-        end
+    def find_character
+        @character = Character.find(params[:id])
+    end
 
-        def character_params
-            params.require(:character).permit(:name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :armor_rating, :challenge_rating, :max_hp, :current_hp, :experience_value, :user_id, :campaign_id)
-        end
+    def character_params
+        params.require(:character).permit(:name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :armor_rating, :challenge_rating, :max_hp, :current_hp, :experience_value, :user_id, :campaign_id)
+    end
 
 end
