@@ -9,11 +9,12 @@
 MVP
 <!-- * Can login -->
 <!-- * Can sign-up -->
-* user can create character
-
+<!-- * user can create character -->
+<!-- * user can create enemy -->
 
 Stretch Goals
 * user can control character's inventory & equipment.
+* user can create campaign
 * none ya
 
 
@@ -22,8 +23,8 @@ Stretch Goals
 MVP
 * Character can gain experiance points
 * Character can level up
-* Character stats can increase
-* Character stats cab decrease  
+<!-- * Character stats can increase -->
+<!-- * Character stats cab decrease   -->
 * Character can die
 
 Stretch
@@ -48,8 +49,8 @@ Stretch
 # Enemy 
 
 MVP
-* Enemy stats can increase
-* Enemy stats cab decrease  
+<!-- * Enemy stats can increase -->
+<!-- * Enemy stats can decrease   -->
 * Enemy can die
 
 
@@ -62,10 +63,11 @@ MVP
 # Items
 
 MVP  
-* Items can be equipped
+<!-- * Item can be stored in inventory -->
+* Items can be equipped (set up to where they can only equip one shield/armor/sword) at a time
 * Items can be consumed
 * Items can effect player stats
-* Items destroyed after consumption.
+* Items destroyed after consumption
 
 Stretch
 * Items have weight

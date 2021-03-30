@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  resources :users, only: [:new, :create]
+  resources :users
   resources :characters
   resources :enemies
+
+  # patch '/characters/:id/edit', to:"characters#edit", as: "edit"
 
   root 'welcome#home'
 end
