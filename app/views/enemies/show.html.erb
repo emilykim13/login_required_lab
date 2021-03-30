@@ -1,7 +1,8 @@
 <h1> <%= @enemy.name %> </h1> 
 <h1> <%= @enemy.current_hp%> / <%= @enemy.max_hp %> </h1>
 <h4> Challenge Rating: <%= @enemy.challenge_rating%>  Experiance: <%= @enemy.experience_value %> </h4>
-<%= button_to "Edit Enemy", @enemy %> <%= button_to "Delete Enemy", @enemy, method: 'delete' %>
+<%= button_to 'Edit Enemy', edit_enemy_path, method: :get %>
+<%= button_to "Delete Enemy", @enemy, method: 'delete' %>
 <hr>
 <h2> Attributes </h2>
 <h3> Strength: <%= @enemy.strength %></h3>
