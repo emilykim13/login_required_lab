@@ -7,12 +7,13 @@
 # User
     
 MVP
-* Can login
-* Can sign-up
+<!-- * Can login -->
+<!-- * Can sign-up -->
 * user can create character
-* user can control character's inventory & equipment.
+
 
 Stretch Goals
+* user can control character's inventory & equipment.
 * none ya
 
 
@@ -38,9 +39,11 @@ Stretch
 
 MVP
 * Turns based on initial highest dice roll
-* Attack landing based on roll compared to AC
+* Attack landing based on roll compared to Armor Rating
+<!-- * Joins Character and Monsters -->
+
+Stretch
 * Damage based on character/enemy weapon
-* Joins Character and Monsters
 
 # Enemy 
 
@@ -52,7 +55,6 @@ MVP
 
 # Campaign
 * Create a campaign
-
 
 
 ### Stretch

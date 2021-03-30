@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_03_29_231942) do
     t.integer "current_hp"
     t.integer "temporary_hp"
     t.integer "experience"
+    t.integer "user_id"
+    t.integer "campaign_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_231942) do
   end
 
   create_table "enemies", force: :cascade do |t|
+    t.string "name"
     t.integer "strength"
     t.integer "dexterity"
     t.integer "constitution"
@@ -54,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_03_29_231942) do
     t.integer "max_hp"
     t.integer "current_hp"
     t.integer "experience_value"
+    t.integer "user_id"
+    t.integer "campaign_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
