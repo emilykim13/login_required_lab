@@ -6,6 +6,8 @@ class Character < ApplicationRecord
     has_many :encounters
     has_many :enemies, through: :encounters
 
+    validates :name, presence: true 
+
 
     def alive? 
         self.current_hp > 0

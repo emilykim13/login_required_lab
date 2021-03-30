@@ -15,14 +15,23 @@ class CharactersController < ApplicationController
        redirect_to @character
     end
 
+    # def update
+    #     @character.update(character_params)
+    #     redirect_to @character
+    # end
+
     def update
-        @character.update(character_params)
-        redirect_to @character
+        @character = Character.create(character_params)
+        if @character.valid?
+            redirect_to @character
+        else
+            render :edit
+        end
     end
 
     def destroy
         @character.delete 
-        redirect_to '/'
+        redirect_to characters_path
     end
 
     private 

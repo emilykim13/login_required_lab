@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :characters
   resources :enemies
 
+  # patch '/characters/:id/edit', to:"characters#edit", as: "edit"
+
   root 'welcome#home'
 end

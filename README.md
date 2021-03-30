@@ -10,7 +10,8 @@ MVP
 <!-- * Can login -->
 <!-- * Can sign-up -->
 * user can create character
-
+* user can create campaign
+* user can create enemy
 
 Stretch Goals
 * user can control character's inventory & equipment.

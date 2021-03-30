@@ -15,14 +15,23 @@ class EnemiesController < ApplicationController
        redirect_to @enemy
     end
 
+    # def update
+    #     @enemy.update(enemy_params)
+    #     redirect_to @enemy
+    # end
+
     def update
-        @enemy.update(enemy_params)
-        redirect_to @enemy
+        @enemy = Enemy.create(enemy_params)
+        if @enemy.valid?
+            redirect_to @enemy
+        else
+            render :edit
+        end
     end
 
     def destroy
         @enemy.delete 
-        redirect_to '/'
+        redirect_to enemies_path
     end
 
     private 
