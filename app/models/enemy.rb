@@ -1,8 +1,7 @@
 class Enemy < ApplicationRecord
     belongs_to :user
     belongs_to :campaign
-    # has_many :enemy_items
-    # has_many :items, through: :enemy_items
+    # has_and_belongs_to_many :items
     has_many :encounters
     has_many :characters, through: :encounters
 
@@ -124,6 +123,23 @@ class Enemy < ApplicationRecord
     def charisma_down(n)
         self.charisma -= n 
         self.charisma_range
+        self.save
+    end
+
+# damage stats add and subtract
+    def damage_range
+        self.damage = self.damage.clamp(4, 100)
+    end
+
+    def damage_up(n)
+        self.damage += n 
+        self.damage_range
+        self.save
+    end
+
+    def damage_down(n)
+        self.damage -= n 
+        self.damage_range
         self.save
     end
     

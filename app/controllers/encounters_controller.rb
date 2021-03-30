@@ -7,11 +7,12 @@ class EncountersController < ApplicationController
         @enemy = @enemy.find(params[:id])
         if response == "attack"
             roll = rand(0..20)
-            if roll > @enemy.challenge_rating
+            if roll > @enemy.armor_rating
                 @enemy.take_dmg(@character.strength)
-            elsif roll < @enemy.challenge_rating
-                @character.take_dmg(@enemy.strength)
-            elsif roll = @enemy.challenge_rating
+            elsif roll < @enemy.armor_rating
+                # @character.take_dmg(@enemy.strength)
+                "ya missed"
+            elsif roll = @enemy.armor_rating
                 @character.take_dmg(@enemy.strength/2).to_f
                 @enemy.take_dmg(@enemy.strength/2).to_f
             end
@@ -19,11 +20,11 @@ class EncountersController < ApplicationController
             #would have to add a redirect_to encounter
         elsif response == "flee"
             roll = rand(0..20)
-            if roll > @enemy.challenge_rating
+            if roll > @enemy.armor_rating
                 @character.take_dmg(@character.strength)
-            elsif roll < @enemy.challenge_rating
+            elsif roll < @enemy.armor_rating
               @character.take_dmg(@enemy.strength)
-            elsif roll = @enemy.challenge_rating
+            elsif roll = @enemy.armor_rating
                 @character.take_dmg(@enemy.strength/2).to_f
                 @enemy.take_dmg(@enemy.strength/2).to_f
             end

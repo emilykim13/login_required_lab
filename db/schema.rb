@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_070242) do
+ActiveRecord::Schema.define(version: 2021_03_30_211419) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
@@ -21,8 +21,16 @@ ActiveRecord::Schema.define(version: 2021_03_30_070242) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "character_items", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
+    t.integer "damage", default: 1
     t.integer "strength"
     t.integer "dexterity"
     t.integer "constitution"
@@ -56,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_070242) do
 
   create_table "enemies", force: :cascade do |t|
     t.string "name"
+    t.integer "damage", default: 1
     t.integer "strength"
     t.integer "dexterity"
     t.integer "constitution"
@@ -69,6 +78,17 @@ ActiveRecord::Schema.define(version: 2021_03_30_070242) do
     t.integer "experience_value"
     t.integer "user_id"
     t.integer "campaign_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "cost"
+    t.float "weight"
+    t.integer "damage_dice", default: 0
+    t.integer "roll", default: 1
+    t.integer "armor", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

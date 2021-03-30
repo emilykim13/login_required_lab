@@ -1,13 +1,20 @@
 class Character < ApplicationRecord
     belongs_to :user
     belongs_to :campaign
-    # has_many :character_items
-    # has_many :items, through: :character_items
+
+    has_many :character_items
+    has_many :items, through: :character_items
+
     has_many :encounters
     has_many :enemies, through: :encounters
 
     validates :name, presence: true 
 
+    def inventory=(items)
+        items.each do |i|
+            item = Item.find(id)
+        end
+    end
 
     def alive? 
         self.current_hp > 0
@@ -128,5 +135,32 @@ class Character < ApplicationRecord
         self.charisma_range
         self.save
     end
+
+# damage stats add and subtract
+    def damage_range
+        self.damage = self.damage.clamp(4, 100)
+    end
+
+    def damage_up(n)
+        self.damage += n 
+        self.damage_range
+        self.save
+    end
+
+    def damage_down(n)
+        self.damage -= n 
+        self.damage_range
+        self.save
+    end
+
+# items
+    def items_attributes=(item_attribute_hash)
+    item_attribute_hash.each do |index, attributes|
+      if attributes && attributes["name"].blank?
+        item = Item.find_or_create_by(name: item_attribute_hash["name"])
+        self.items << item
+      end
+    end
+  end
     
 end
