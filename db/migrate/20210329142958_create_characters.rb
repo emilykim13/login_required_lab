@@ -1,6 +1,7 @@
 class CreateCharacters < ActiveRecord::Migration[6.1]
   def change
     create_table :characters do |t|
+      t.string :name
       t.integer :strength
       t.integer :dexterity
       t.integer :constitution
@@ -8,17 +9,10 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.integer :wisdom
       t.integer :charisma
       t.integer :armor_rating
-      t.integer :initiative
-      t.integer :speed
       t.integer :max_hp
       t.integer :current_hp
       t.integer :temporary_hp
-      t.integer :hit_dice
-      t.string :race
-      t.string :profession #collection_select?
       t.integer :experience
-
-
 
       t.timestamps
     end
