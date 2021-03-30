@@ -1,5 +1,11 @@
-<h1>Welcome <%= @user.username %> to DND</h1> <br><br>
+<h1>Welcome <%= @user.username %> to DND</h1>
 
+<h3> Create a new Character </h3>
+<%= button_to 'Create Character', new_character_path, method: :get %>
+
+
+
+<h3> Logout </h3>
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
+  <input type=submit value='Logout'>
 <% end %>

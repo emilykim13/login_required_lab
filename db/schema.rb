@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_231942) do
+ActiveRecord::Schema.define(version: 2021_03_30_070242) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
     t.string "description"
+    t.text "dialogue", default: "--- []\n"
+    t.text "response", default: "--- []\n"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -34,6 +36,13 @@ ActiveRecord::Schema.define(version: 2021_03_29_231942) do
     t.integer "experience"
     t.integer "user_id"
     t.integer "campaign_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dialogues", force: :cascade do |t|
+    t.integer "campaign_id"
+    t.string "sentence"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

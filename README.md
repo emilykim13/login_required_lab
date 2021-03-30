@@ -9,9 +9,9 @@
 MVP
 <!-- * Can login -->
 <!-- * Can sign-up -->
-* user can create character
+<!-- * user can create character -->
 * user can create campaign
-* user can create enemy
+<!-- * user can create enemy -->
 
 Stretch Goals
 * user can control character's inventory & equipment.
@@ -23,8 +23,8 @@ Stretch Goals
 MVP
 * Character can gain experiance points
 * Character can level up
-* Character stats can increase
-* Character stats cab decrease  
+<!-- * Character stats can increase -->
+<!-- * Character stats cab decrease   -->
 * Character can die
 
 Stretch
@@ -49,8 +49,8 @@ Stretch
 # Enemy 
 
 MVP
-* Enemy stats can increase
-* Enemy stats cab decrease  
+<!-- * Enemy stats can increase -->
+<!-- * Enemy stats cab decrease   -->
 * Enemy can die
 
 

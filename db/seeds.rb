@@ -6,12 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Enemy.destroy_all
+Dialogue.destroy_all
 Character.destroy_all
 User.destroy_all
 Campaign.destroy_all
 
-cam1 = Campaign.create(title: "land of the oof")
-cam2 = Campaign.create(title: "oof em port")
+
+
+cam1 = Campaign.create(title: "Get that BREAD", description: "The art of getting bread, loaf, and buns", dialogue: [], response: [])
+cam2 = Campaign.create(title: "Get that bruh", description: "The art of getting bruh, bursh, and burhs", dialogue: ["blur", "hur", "dude"], response: ["poop", "doop", "boop"])
+d1 = Dialogue.create(campaign_id: cam1.id, sentence: "Apple Sauce")
+
+# what if we created a model that shovels the user's responses into an array and comsumes it in order
 
 usr1 = User.create(username: "emily13", password: "milk")
 
