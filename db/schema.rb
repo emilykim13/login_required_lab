@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_03_29_231942) do
     t.integer "current_hp"
     t.integer "temporary_hp"
     t.integer "experience"
+    t.integer "surprise", default: 0
+    t.integer "initiative", default: 0
     t.integer "user_id"
     t.integer "campaign_id"
     t.datetime "created_at", precision: 6, null: false
@@ -57,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_231942) do
     t.integer "max_hp"
     t.integer "current_hp"
     t.integer "experience_value"
+    t.integer "initiative", default: 0
     t.integer "user_id"
     t.integer "campaign_id"
     t.datetime "created_at", precision: 6, null: false
