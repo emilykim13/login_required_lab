@@ -6,80 +6,73 @@
 
 # User
     
-    MVP
-    * user can take the role of either player or dungeon master
-    * user can create character
-    * user can control character's inventory & equipment.
+MVP
+<!-- * Can login -->
+<!-- * Can sign-up -->
+* user can create character
 
-    Stretch Goals
 
-# Dungeon Master
-   
-    MVP
-    * DM controls story narative, events, can create combat encounter. 
-    * DM can assign damage to characters
-    * DM can create enemies
-    * DM can end encounters early
+Stretch Goals
+* user can control character's inventory & equipment.
+* none ya
 
-    Stretch
-    * DM can issue advantages and disadvantages.
 
 # Character
 
-    MVP
-    * Character can gain experiance points
-    * Character can level up
-    * Character stats can increase
-    * Character stats cab decrease  
-    * Character can die
+MVP
+* Character can gain experiance points
+* Character can level up
+* Character stats can increase
+* Character stats cab decrease  
+* Character can die
 
-    Stretch
-    * Character can gain currency
-    * Character can spend currency
-    * Characters can gain attributes
-    * Character can have class
-    * Character can get sub-class
-    * Character can multi-class
+Stretch
+* Character can gain currency
+* Character can spend currency
+* Characters can gain attributes
+* Character can have class
+* Character can get sub-class
+* Character can multi-class
 
-# Items
-
-    MVP  
-    * Items can be equipped
-    * Items can be consumed
-    * Items can effect player stats
-    * Items destroyed after consumption.
-
-    Stretch
-    * Items have weight
-    * Items affect player weight
-    * Items can be perishable
 
 # Encounter
 
-    MVP
-    * Turns based on initial highest dice roll
-    * Attack landing based on roll compared to AC
-    * Damage based on character/enemy weapon
-    * Joins Character and Monsters
+MVP
+* Turns based on initial highest dice roll
+* Attack landing based on roll compared to Armor Rating
+<!-- * Joins Character and Monsters -->
+
+Stretch
+* Damage based on character/enemy weapon
 
 # Enemy 
 
-    MVP
-    * Enemy stats can increase
-    * Enemy stats cab decrease  
-    * Enemy can die
+MVP
+* Enemy stats can increase
+* Enemy stats cab decrease  
+* Enemy can die
 
-# Table 
-
-    MVP
-    * Can be created by DM
-    * Can be edited by DM
-    * Can be destroyed by DM
-
-# Chat Room
-
-    MVP
-    * Displayes User Messages
 
 # Campaign
-    * Create a campaign
+* Create a campaign
+
+
+### Stretch
+
+# Items
+
+MVP  
+* Items can be equipped
+* Items can be consumed
+* Items can effect player stats
+* Items destroyed after consumption.
+
+Stretch
+* Items have weight
+* Items affect player weight
+* Items can be perishable
+    
+# Chat Room
+
+MVP
+* Displayes User Messages

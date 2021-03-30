@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-resources :enemies
-resources :characters
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
+  resources :users, only: [:new, :create]
+  resources :characters
+  resources :enemies
+
+  root 'welcome#home'
 end
