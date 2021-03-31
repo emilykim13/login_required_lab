@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 CharacterItem.destroy_all
 Item.destroy_all
 Enemy.destroy_all
@@ -33,14 +26,6 @@ shield4 = Item.create(name: "Nike Toe Boots", cost: "450", weight: 12, armor: 19
 shield5 = Item.create(name: "Dino Suit", cost: "500", weight: 12, armor: 20)
 shield6 = Item.create(name: "N95 Masks", cost: "800", weight: 12, armor: 25)
 
-# potion1 = Item.create(name: "lul sword", cost: "50", weight: 12, damage_dice: 10)
-# potion2 = Item.create(name: "lul sword", cost: "50", weight: 12, damage_dice: 10)
-# potion3 = Item.create(name: "lul sword", cost: "50", weight: 12, damage_dice: 10)
-# potion4 = Item.create(name: "lul sword", cost: "50", weight: 12, damage_dice: 10)
-# potion5 = Item.create(name: "lul sword", cost: "50", weight: 12, damage_dice: 10)
-
-
-
 # Event.create( title: , chapter?, dialogue )
 
 # what if we created a model that shovels the user's responses into an array and comsumes it in order
@@ -54,17 +39,17 @@ cam2 = Campaign.create(title: "oof em port")
 
 usr2 = User.create(username:"my oofs tho", password_digest: "oof")
 
-e1 = Enemy.create( name: "oof" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam1 , user: usr1 )
-e2 = Enemy.create( name: "oofer" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20), campaign: cam1 , user: usr1)
-e3 = Enemy.create( name: "oofest" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam1 , user: usr1)
-e4 = Enemy.create( name: "oofy" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam2 , user: usr1)
-e5 = Enemy.create( name: "oofem" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam2 , user: usr1)
+e1 = Enemy.create( name: "Angelo" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam1 , user: usr1 )
+e2 = Enemy.create( name: "Emily" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20), campaign: cam1 , user: usr1)
+e3 = Enemy.create( name: "Cori" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam1 , user: usr1)
+e4 = Enemy.create( name: "Donovan" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam2 , user: usr1)
+e5 = Enemy.create( name: "Shane" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), challenge_rating: 1  , max_hp: 3 , current_hp: 3 , experience_value: rand(0..20),  campaign: cam2 , user: usr1)
 
-c1 = Character.create( name: "foo" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam1 , user: usr1 )
-c2 = Character.create( name: "refoo" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam1 , user: usr1)
-c3 = Character.create( name: "tsefoo" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam1 , user: usr1)
-c4 = Character.create( name: "yfoo" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20), campaign: cam2 , user: usr1)
-c5 = Character.create( name: "mefoo" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam2 , user: usr1)
+c1 = Character.create( name: "Raul" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam1 , user: usr1 )
+c2 = Character.create( name: "Nestor" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam1 , user: usr1)
+c3 = Character.create( name: "Nestor" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam1 , user: usr1)
+c4 = Character.create( name: "Jose" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20), campaign: cam2 , user: usr1)
+c5 = Character.create( name: "Adri" , strength: rand(0..20) , dexterity: rand(0..20) , constitution: rand(0..20) , intelligence: rand(0..20) , wisdom: rand(0..20) , charisma: rand(0..20) , armor_rating: rand(0..10), max_hp: 3 , current_hp: 3 , experience: rand(0..20),  campaign: cam2 , user: usr1)
 
 
 encounter_1 = Encounter.create(character: c1, enemy: e1)
