@@ -65,7 +65,7 @@ MVP
 MVP  
 <!-- * Item can be stored in inventory -->
 <!-- * Items can be equipped (set up to where they can only equip one shield/armor/sword) at a time -->
-* Items can effect player stats
+<!-- * Items can effect player stats -->
 <!-- * Items have weight -->
 
 Stretch

@@ -1,4 +1,3 @@
-
 <%= form_for @character do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %> <br><br>
@@ -22,21 +21,33 @@
     <%= f.number_field :current_hp %> <br><br>
     <%= f.label :experience %>
     <%= f.number_field :experience %> <br><br>
+
     <%= f.label :user_id %>
     <%= f.collection_select :user_id , User.all, :id, :username%> <br><br>
     <%= f.label :campaign_id %>
     <%= f.collection_select :campaign_id, Campaign.all, :id, :title %> <br><br>
 
+    <h2> Item Catalogue </h2>
+        <% Item.all.each do |o|%>
+            <li><strong><%= o.name %></strong></li>
+            <ul><p> Price: <%= o.cost %><p>
+            <p> Weight: <%= o.weight %><p>
+            <p> Damage: <%= o.damage_dice %><p>
+            <p> Armor Rating: <%= o.armor %><p></ul>
+        <% end %>
 
     <h3> Select your items </h3>
     <ul>
-    <%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
+   <strong> <%= f.collection_check_boxes :item_ids, Item.all, :id, :name %></strong>
     </ul>
     <br><br>
-    <br><br>
-    <%= f.submit %>  
 
+
+
+
+    <%= f.submit %>  
 <% end %>
+
 
 
 

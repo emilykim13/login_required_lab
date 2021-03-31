@@ -1,14 +1,17 @@
 class CharactersController < ApplicationController
     before_action :find_character, only: [:show, :edit, :update, :destroy]
     before_action :inventory, only: [:show]
-    before_action :instances, only: [:show, :edit, :update, :destroy]
+    # before_action :instances, only: [:show, :edit, :update, :destroy]
+    # before_action :weapon, only: [:update, :edit]
 
     def index
         @characters = Character.all
+        @user = User.find(session[:user_id])
     end
 
     def show
         @character = Character.find(params[:id])
+        # byebug
     end
 
 
@@ -42,6 +45,7 @@ class CharactersController < ApplicationController
         redirect_to characters_path
     end
 
+
 # item code
 
 
@@ -52,12 +56,43 @@ class CharactersController < ApplicationController
     def consume_item
     end
 
+    def equip_weapon
+    end
+    
+    def equip_shield
+    end
+
+    def weapon
+      @character = Character.find(params[:character_id])
+      @weapon = Item.find(params[:character][:item_ids])
+      if @weapon
+        @character.damage = @weapon.damage_dice
+        @character.save
+        redirect_to character_path(@character)
+      else 
+        redirect_to character_path(@character)
+      end
+    end
+
+    def shield
+      @character = Character.find(params[:character_id])
+      @shield = Item.find(params[:character][:item_ids])
+      if @shield
+        @character.armor_rating = @shield.armor
+        # @character.weight + @shield.weight ()
+        @character.save
+        redirect_to character_path(@character)
+      else 
+        redirect_to character_path(@character)
+      end
+    end
+
     private 
 
-    def instances
-        @weapons = Item.all.select {|item| item.damage_dice >= 4}
-        @shields = Item.all.select {|item| item.armor >= 11}
-    end
+    # def instances
+    #     @weapons = Item.all.select {|item| item.damage_dice >= 4}
+    #     @shields = Item.all.select {|item| item.armor >= 11}
+    # end
 
 
     def find_character
