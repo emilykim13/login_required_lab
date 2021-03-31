@@ -10,6 +10,7 @@ class Character < ApplicationRecord
 
     @critical = 20
     validates :name, presence: true 
+    
 
     def alive? 
         self.current_hp > 0

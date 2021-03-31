@@ -29,7 +29,7 @@ shield1 = Item.create(name: "not so okay shield", cost: "50", weight: 12, armor:
 shield2 = Item.create(name: "decent shield", cost: "50", weight: 12, armor: 15)
 shield3 = Item.create(name: "less than decent shield", cost: "50", weight: 12, armor: 13)
 shield4 = Item.create(name: "dope ass shield", cost: "50", weight: 12, armor: 18)
-shield5 = Item.create(name: "slightly okay shield =", cost: "50", weight: 12, armor: 12)
+shield5 = Item.create(name: "slightly okay shield", cost: "50", weight: 12, armor: 12)
 
 # potion1 = Item.create(name: "lul sword", cost: "50", weight: 12, damage_dice: 10)
 # potion2 = Item.create(name: "lul sword", cost: "50", weight: 12, damage_dice: 10)

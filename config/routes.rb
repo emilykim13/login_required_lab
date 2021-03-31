@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
+  # get '/equip' => 'characters#inventory'
+  # patch '/equip' => 'characters#update'
   resources :users
   resources :characters
   resources :enemies

@@ -13,7 +13,7 @@ MVP
 <!-- * user can create enemy -->
 
 Stretch Goals
-* user can control character's inventory & equipment.
+<!-- * user can control character's inventory & equipment. -->
 * user can create campaign
 * none ya
 
@@ -64,13 +64,13 @@ MVP
 
 MVP  
 <!-- * Item can be stored in inventory -->
-* Items can be equipped (set up to where they can only equip one shield/armor/sword) at a time
-* Items can be consumed
+<!-- * Items can be equipped (set up to where they can only equip one shield/armor/sword) at a time -->
 * Items can effect player stats
-* Items destroyed after consumption
+<!-- * Items have weight -->
 
 Stretch
-* Items have weight
+* Items can be consumed
+* Items destroyed after consumption
 * Items affect player weight
 * Items can be perishable
     

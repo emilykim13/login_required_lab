@@ -7,6 +7,11 @@ class CharactersController < ApplicationController
         @characters = Character.all
     end
 
+    def show
+        @character = Character.find(params[:id])
+    end
+
+
     def new
         @character = Character.new
     end
@@ -14,8 +19,7 @@ class CharactersController < ApplicationController
     def create 
        @character = Character.create(character_params)
        @character.save
-       @weapons = Item.all.select {|item| item.damage_dice >= 4}
-        @shields = Item.all.select {|item| item.armor >= 11}
+        # byebug
        redirect_to @character
     end
 
@@ -40,26 +44,13 @@ class CharactersController < ApplicationController
 
 # item code
 
-    def inventory #not a method
-        @character = Character.find_by(params[:id])
-        @inventory = @character.items
-    end
 
-
-    def equip_item
-        # @character = Character.find_by(params[:id])
-        # if @character.items == @inventory
-        # @item =
-
+    def inventory # method that returns an array of items
+        @inventory = @character.item_ids.map {|one| Item.find(one)}
     end
 
     def consume_item
     end
-
-    def equip_armor
-        # build armor as an item
-    end
-
 
     private 
 

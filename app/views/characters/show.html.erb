@@ -14,3 +14,21 @@
 <hr>
 
 
+<h1> Character's Inventory </h1>
+
+<% @inventory.each do |o|%>
+<li><strong><%= o.name %></strong></li>
+<ul><p> Price: <%= o.cost %><p>
+<p> Weight: <%= o.weight %><p>
+<p> Damage: <%= o.damage_dice %><p>
+<p> Armor Rating: <%= o.armor %><p></ul>
+
+<% end %>
+<%= form_for @character, :as => :character, :url => equip_path(@character) do |f| %>
+<h3> Select your weapon </h3>
+<%= f.collection_select :item_ids, @inventory.select {|item| item.damage_dice >= 4}, :id, :name %><br><br>
+<h3> Select your armor </h3>
+<%= f.collection_select :item_ids, @inventory.select {|item| item.armor >= 11}, :id, :name %><br><br>
+<%= f.submit "Equip Items" %>
+<% end %>
+

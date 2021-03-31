@@ -1,3 +1,4 @@
+
 <%= form_for @character do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %> <br><br>
@@ -25,10 +26,13 @@
     <%= f.collection_select :user_id , User.all, :id, :username%> <br><br>
     <%= f.label :campaign_id %>
     <%= f.collection_select :campaign_id, Campaign.all, :id, :title %> <br><br>
-    <h3> Select your weapon </h3>
-    <%= f.collection_select :item_ids, Item.all.select {|item| item.damage_dice >= 4}, :id, :name %><br><br>
-    <h3> Select your armor </h3>
-    <%= f.collection_select :item_ids, Item.all.select {|item| item.armor >= 11}, :id, :name %><br><br>
+
+
+    <h3> Select your items </h3>
+    <ul>
+    <%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
+    </ul>
+    <br><br>
     <br><br>
     <%= f.submit %>  
 
