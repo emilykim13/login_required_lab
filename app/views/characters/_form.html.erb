@@ -1,3 +1,41 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<body>
+
+
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+  <h1 class="w3-xxxlarge w3-text-theme">Side Navigation</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button">Link 4</a>
+</nav>
+
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
+  <div class="w3-center">
+  <h4>Build or Edit a Character</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom">Character Sheet</h1>
+    <div class="w3-padding-32">
+    </div>
+  </div>
+</header>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+
+   
+    </div>
+    <h1> Character Information: </h1>
+    <ul>
 <%= form_for @character do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %> <br><br>
@@ -25,25 +63,168 @@
     <%= f.label :user_id %>
     <%= f.collection_select :user_id , User.all, :id, :username%> <br><br>
     <%= f.label :campaign_id %>
-    <%= f.collection_select :campaign_id, Campaign.all, :id, :title %> <br><br>
+    <%= f.collection_select :campaign_id, Campaign.all, :id, :title %> <br><br> </ul>
+  </div>
+</div>
 
-    <h2> Item Catalogue </h2>
-        <% Item.all.each do |o|%>
-            <li><strong><%= o.name %></strong></li>
-            <ul><p> Price: <%= o.cost %><p>
-            <p> Weight: <%= o.weight %><p>
-            <p> Damage: <%= o.damage_dice %><p>
-            <p> Armor Rating: <%= o.armor %><p></ul>
-        <% end %>
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+      <header class="w3-container w3-theme-l1"> 
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">×</span>
+        <h4>Oh snap! We just showed you a modal..</h4>
+        <h5>Because we can <i class="fa fa-smile-o"></i></h5>
+      </header>
+      <div class="w3-padding">
+        <p>Cool huh? Ok, enough teasing around..</p>
+        <p>Go to our <a class="w3-btn" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!</p>
+      </div>
+      <footer class="w3-container w3-theme-l1">
+        <p>Modal footer</p>
+      </footer>
+    </div>
+</div>
 
+
+
+<div class="w3-row-padding w3-center w3-margin-top">
+<strong><h1> Item Catalogue </h1></strong>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3><%= Item.first.name %></h3><br>
+  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= Item.first.cost %></p>
+  <p>Weight: <%= Item.first.weight %></p>
+  <p>Damage: <%= Item.first.damage_dice %></p>
+  <p>Armor Rating: <%= Item.first.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3><%= Item.second.name %></h3><br>
+  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= Item.second.cost %></p>
+  <p>Weight: <%= Item.second.weight %></p>
+  <p>Damage: <%= Item.second.damage_dice %></p>
+  <p>Armor Rating: <%= Item.second.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3><%= Item.third.name %></h3><br>
+  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= Item.third.cost %></p>
+  <p>Weight: <%= Item.third.weight %></p>
+  <p>Damage: <%= Item.third.damage_dice %></p>
+  <p>Armor Rating: <%= Item.third.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3><%= Item.fourth.name %></h3><br>
+  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= Item.fourth.cost %></p>
+  <p>Weight: <%= Item.fourth.weight %></p>
+  <p>Damage: <%= Item.fourth.damage_dice %></p>
+  <p>Armor Rating: <%= Item.fourth.armor %></p>
+  </div>
+</div>
+
+
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h3><%= Item.fifth.name %></h3><br>
+  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= Item.fifth.cost %></p>
+  <p>Weight: <%= Item.fifth.weight %></p>
+  <p>Damage: <%= Item.fifth.damage_dice %></p>
+  <p>Armor Rating: <%= Item.fifth.armor %></p>
+  </div>
+</div>
+
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <% sixth = Item.all[5] %>
+  <h3><%= sixth.name %></h3><br>
+  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= sixth.cost %></p>
+  <p>Weight: <%= sixth.weight %></p>
+  <p>Damage: <%= sixth.damage_dice %></p>
+  <p>Armor Rating: <%= sixth.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <% seventh = Item.all[6] %>
+  <h3><%= seventh.name %></h3><br>
+  <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= seventh.cost %></p>
+  <p>Weight: <%= seventh.weight %></p>
+  <p>Damage: <%= seventh.damage_dice %></p>
+  <p>Armor Rating: <%= seventh.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <% eigth = Item.all[7] %>
+  <h3><%= eigth.name %></h3><br>
+  <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= eigth.cost %></p>
+  <p>Weight: <%= eigth.weight %></p>
+  <p>Damage: <%= eigth.damage_dice %></p>
+  <p>Armor Rating: <%= eigth.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <% ninth = Item.all[8] %>
+  <h3><%= ninth.name %></h3><br>
+  <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= ninth.cost %></p>
+  <p>Weight: <%= ninth.weight %></p>
+  <p>Damage: <%= ninth.damage_dice %></p>
+  <p>Armor Rating: <%= ninth.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <% tenth = Item.all[9] %>
+  <h3><%= tenth.name %></h3><br>
+  <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= tenth.cost %></p>
+  <p>Weight: <%= tenth.weight %></p>
+  <p>Damage: <%= tenth.damage_dice %></p>
+  <p>Armor Rating: <%= tenth.armor %></p>
+  </div>
+</div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <% eleventh = Item.all[10] %>
+  <h3><%= eleventh.name %></h3><br>
+  <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= eleventh.cost %></p>
+  <p>Weight: <%= eleventh.weight %></p>
+  <p>Damage: <%= eleventh.damage_dice %></p>
+  <p>Armor Rating: <%= eleventh.armor %></p>
+  </div>
+</div><div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <% twelth = Item.all[11] %>
+  <h3><%= twelth.name %></h3><br>
+  <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Cost: <%= twelth.cost %></p>
+  <p>Weight: <%= twelth.weight %></p>
+  <p>Damage: <%= twelth.damage_dice %></p>
+  <p>Armor Rating: <%= twelth.armor %></p>
+  </div>
+</div>
+<br><br>
+<br><br>
     <h3> Select your items </h3>
     <ul>
    <strong> <%= f.collection_check_boxes :item_ids, Item.all, :id, :name %></strong>
     </ul>
     <br><br>
-
-
-
 
     <%= f.submit %>  
 <% end %>
@@ -52,5 +233,5 @@
 
 
 <h3> Go back to home </h3>
-<%= button_to 'Go back', root_path, method: :get %>
+<%= button_to 'Go back', root_path, method: :get %> <br><br><br><br>
 

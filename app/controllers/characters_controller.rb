@@ -54,6 +54,7 @@ class CharactersController < ApplicationController
     end
 
     def consume_item
+      # create a currency system and consumption method
     end
 
     def equip_weapon
@@ -88,12 +89,6 @@ class CharactersController < ApplicationController
     end
 
     private 
-
-    # def instances
-    #     @weapons = Item.all.select {|item| item.damage_dice >= 4}
-    #     @shields = Item.all.select {|item| item.armor >= 11}
-    # end
-
 
     def find_character
         @character = Character.find(params[:id])

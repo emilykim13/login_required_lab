@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/equipshield' => 'characters#equip_shield'
   post '/equipshield/:character_id' => 'characters#shield'
 
+  get '/instructions' => 'welcome#howtoplay'
+  
   resources :users
   resources :characters
   resources :enemies
