@@ -16,4 +16,24 @@ class SessionsController < ApplicationController
       session.delete :user_id
       redirect_to '/'
     end
+
+
+    def equip_weapon
+    end
+    
+    def equip_shield
+    end
+
+    def weapon
+      # @character = Character.find(params[:id])
+      # byebug
+      session[:weapon] = @weapon
+      redirect_to controller: 'characters', action: 'show'
+    end
+
+    def shield
+      # @character = Character.find(params[:id])
+      session[:shield] = @shield
+      redirect_to controller: 'characters', action: 'show'
+    end
 end

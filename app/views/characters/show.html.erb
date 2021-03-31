@@ -24,11 +24,17 @@
 <p> Armor Rating: <%= o.armor %><p></ul>
 
 <% end %>
-<%= form_for @character, :as => :character, :url => equip_path(@character) do |f| %>
+
+<%= form_for @character, url: equipweapon_path, method: :post, action: @character do |f| %>
 <h3> Select your weapon </h3>
 <%= f.collection_select :item_ids, @inventory.select {|item| item.damage_dice >= 4}, :id, :name %><br><br>
-<h3> Select your armor </h3>
-<%= f.collection_select :item_ids, @inventory.select {|item| item.armor >= 11}, :id, :name %><br><br>
-<%= f.submit "Equip Items" %>
+
+<%= f.submit "Equip Weapon" %>
 <% end %>
 
+<%= form_for @character, url: equipshield_path, method: :post do |f| %>
+<h3> Select your armor </h3>
+<%= f.collection_select :item_ids, @inventory.select {|item| item.armor >= 11}, :id, :name %><br><br>
+
+<%= f.submit "Equip Armor" %>
+<% end %>

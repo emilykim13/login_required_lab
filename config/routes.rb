@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  # get '/equip' => 'characters#inventory'
-  # patch '/equip' => 'characters#update'
+  get '/equipweapon' => 'sessions#equip_weapon'
+  post '/equipweapon' => 'sessions#weapon'
+  get '/equipshield' => 'sessions#equip_shield'
+  post '/equipshield' => 'sessions#shield'
+
   resources :users
   resources :characters
   resources :enemies
