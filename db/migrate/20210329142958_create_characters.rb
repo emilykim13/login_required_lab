@@ -2,6 +2,7 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
   def change
     create_table :characters do |t|
       t.string :name
+      t.integer :level, default: 1
       t.integer :damage, default: 1
       t.integer :strength
       t.integer :dexterity
@@ -9,11 +10,11 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.integer :intelligence
       t.integer :wisdom
       t.integer :charisma
-      t.integer :armor_rating
+      t.integer :armor_rating, default: 10
       t.integer :max_hp
       t.integer :current_hp
       t.integer :temporary_hp
-      t.integer :experience
+      t.integer :experience, default: 0
       t.integer :surprise, default: 0
       t.integer :initiative, default: 0
       t.integer :user_id

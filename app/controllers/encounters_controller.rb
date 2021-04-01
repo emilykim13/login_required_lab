@@ -1,34 +1,95 @@
 class EncountersController < ApplicationController
+    before_action :find_encounter, exccept: [:new, :index ]
+    before_action :find_character, exccept: [:new, :index ]
+    before_action :find_enemy, exccept: [:new, :index ]
 
-    def throw_hands
-        # character vs enemy
-        # broken method bc response doesnt exist yet
-        @character = @character.find(params[:id])
-        @enemy = @enemy.find(params[:id])
-        if response == "attack"
-            roll = rand(0..20)
-            if roll > @enemy.armor_rating
-                @enemy.take_dmg(@character.strength)
-            elsif roll < @enemy.armor_rating
-                # @character.take_dmg(@enemy.strength)
-                "ya missed"
-            elsif roll = @enemy.armor_rating
-                @character.take_dmg(@enemy.strength/2).to_f
-                @enemy.take_dmg(@enemy.strength/2).to_f
-            end
-            #went to bread -- left off here
-            #would have to add a redirect_to encounter
-        elsif response == "flee"
-            roll = rand(0..20)
-            if roll > @enemy.armor_rating
-                @character.take_dmg(@character.strength)
-            elsif roll < @enemy.armor_rating
-              @character.take_dmg(@enemy.strength)
-            elsif roll = @enemy.armor_rating
-                @character.take_dmg(@enemy.strength/2).to_f
-                @enemy.take_dmg(@enemy.strength/2).to_f
-            end
+
+    def enter_combat
+        @encounter.new_round
+        @encounter.heal_enemy(@enemy.max_hp)
+        @encounter.roll_initiatives 
+        redirect_to "/encounters/in_combat/#{params[:id]}"
+    end
+
+    def in_combat
+        if @encounter.still_fighting? == false
+            redirect_to "/encounters/end_combat/#{params[:id]}"
         end
     end
 
+    def end_combat
+        if @character.alive? && !@enemy.alive?
+            @encounter.experience_reward 
+            @encounter.character_level
+        end
+    end
+
+    def escape_combat
+        if @encounter.character_escape
+            redirect_to "/encounters/end_combat/#{params[:id]}"
+        else 
+            @encounter.cycle_turn
+            redirect_to "/encounters/in_combat/#{params[:id]}"
+        end
+    end    
+            
+
+    def character_attack 
+       if @encounter.character_attack_lands?
+            @encounter.character_attack(1, 6)
+            flash[:alert] = "attack Landed"
+            @encounter.cycle_turn
+            redirect_to "/encounters/in_combat/#{params[:id]}"
+       else
+            flash[:alert] = "attack Missed"
+            @encounter.cycle_turn
+            redirect_to "/encounters/in_combat/#{params[:id]}"
+       end
+    end
+
+    def enemy_attack
+        if @encounter.enemy_attack_lands?
+            @encounter.enemy_attack(1, 6)
+            flash[:alert] = " attack Landed"
+            @encounter.cycle_turn
+            redirect_to "/encounters/in_combat/#{params[:id]}"
+        else
+            flash[:alert] = "attack Missed"
+            @encounter.cycle_turn
+            redirect_to "/encounters/in_combat/#{params[:id]}"
+        end
+    end
+
+    def character_heal
+        @encounter.heal_character(rand(1..10) )
+        @encounter.cycle_turn
+        redirect_to "/encounters/in_combat/#{params[:id]}"
+    end
+
+    def enemy_heal
+        @encounter.heal_enemy(rand(1..10) )
+        @encounter.cycle_turn
+        redirect_to "/encounters/in_combat/#{params[:id]}"
+    end
+
+
+    private
+
+        def find_encounter
+            @encounter = Encounter.find(params[:id])
+        end
+
+        def find_character
+            @character = @encounter.character
+        end
+
+        def find_enemy
+            @enemy = @encounter.enemy
+        end
+
+        def encounter_params
+            params.require(:encounter).permit(:character, :enemy)
+        end
+
+   
 end

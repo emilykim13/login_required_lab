@@ -3,6 +3,10 @@ class CharactersController < ApplicationController
     before_action :inventory, only: [:show]
     before_action :instances, only: [:show, :edit, :update, :destroy]
 
+    def show 
+        @character = Character.find(params[:id])
+    end
+
     def index
         @characters = Character.all
     end

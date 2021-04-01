@@ -21,11 +21,11 @@ Stretch Goals
 # Character
 
 MVP
-* Character can gain experiance points
-* Character can level up
+<!-- * Character can gain experiance points -->
+<!-- * Character can level up -->
 <!-- * Character stats can increase -->
 <!-- * Character stats cab decrease   -->
-* Character can die
+<!-- * Character can die -->
 
 Stretch
 * Character can gain currency
@@ -39,8 +39,8 @@ Stretch
 # Encounter
 
 MVP
-* Turns based on initial highest dice roll
-* Attack landing based on roll compared to Armor Rating
+<!-- * Turns based on initial highest dice roll -->
+<!-- * Attack landing based on roll compared to Armor Rating -->
 <!-- * Joins Character and Monsters -->
 
 Stretch
@@ -51,7 +51,7 @@ Stretch
 MVP
 <!-- * Enemy stats can increase -->
 <!-- * Enemy stats can decrease   -->
-* Enemy can die
+<!-- * Enemy can die -->
 
 
 # Campaign
