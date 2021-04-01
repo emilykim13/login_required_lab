@@ -14,25 +14,40 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </style>
 <body>
 
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Dungeons & Dragons</h1>
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
+  <div class="w3-center"><br><br>
+  <h4>DND Reinvented</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom">DUNGEONS & DRAGONS</h1>
   <p class="w3-xlarge">Created by Emily Nguyen and Nestor Venegas</p>
+    <div class="w3-padding-32"><br><br>
+    </div>
+  </div>
+</header>
+
+<header class="w3-container w3-black w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">Explore your imagination</h1>
+  <p class="w3-xlarge">Learn how to play</p>
     <a href="http://localhost:3000/instructions">
-      <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">How to Play</button>
+      <button class="w3-button w3-blue w3-padding-large w3-large ">Game Rules</button>
     </a>
 </header>
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-center">
-    
-      <h1>Welcome <%= @user.username %> to DND</h1>
-      <ul><h5 class="w3-padding-32">Carne assssaaaaaaduuhhhhhhhhhhhhhhhh lul <3</h5></ul>
-
+    <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+      <h1>Hello <%= @user.username %>, welcome to DND.</h1>
+      <h3>It's a great day to throw hands :)</h3>
+      </header>
+      <hr>
+      <header class="w3-container w3-black w3-center" style="padding:80px 16px"> 
+      <h5>Throw hands is a slang term that means "Fight." It is typically used online but is also commonly spoken in real-life to refer to physical or verbal confrontations. The term comes from lifting, or throwing, your hands up like a boxer at the start of a match to get ready to attack another person or defend yourself.</h5>
+      </header>
       <p class="w3-text-grey">
 
       <h3> Create a new Character </h3>
       <%= button_to 'Create Character', new_character_path, method: :get %><br><br>
-      <%= button_to 'Check Out Characters', characters_path, method: :get %><br><br>
+      <%= button_to 'My Characters List', characters_path, method: :get %><br><br>
       <h3> Delete your account </h3>
       <%= button_to "Delete Account", @user, method: 'delete' %><br><br>
 
