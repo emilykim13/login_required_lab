@@ -1,7 +1,8 @@
 class CharactersController < ApplicationController
     before_action :find_character, only: [:show, :edit, :update, :destroy]
     before_action :inventory, only: [:show]
-    before_action :instances, only: [:show, :edit, :update, :destroy]
+    # before_action :instances, only: [:show, :edit, :update, :destroy]
+    # before_action :weapon, only: [:update, :edit]
 
     def show 
         @character = Character.find(params[:id])
@@ -9,7 +10,14 @@ class CharactersController < ApplicationController
 
     def index
         @characters = Character.all
+        @user = User.find(session[:user_id])
     end
+
+    def show
+        @character = Character.find(params[:id])
+        # byebug
+    end
+
 
     def new
         @character = Character.new
@@ -18,8 +26,7 @@ class CharactersController < ApplicationController
     def create 
        @character = Character.create(character_params)
        @character.save
-       @weapons = Item.all.select {|item| item.damage_dice >= 4}
-        @shields = Item.all.select {|item| item.armor >= 11}
+        # byebug
        redirect_to @character
     end
 
@@ -42,36 +49,50 @@ class CharactersController < ApplicationController
         redirect_to characters_path
     end
 
+
 # item code
 
-    def inventory #not a method
-        @character = Character.find_by(params[:id])
-        @inventory = @character.items
-    end
 
-
-    def equip_item
-        # @character = Character.find_by(params[:id])
-        # if @character.items == @inventory
-        # @item =
-
+    def inventory # method that returns an array of items
+        @inventory = @character.item_ids.map {|one| Item.find(one)}
     end
 
     def consume_item
+      # create a currency system and consumption method
     end
 
-    def equip_armor
-        # build armor as an item
+    def equip_weapon
+    end
+    
+    def equip_shield
     end
 
+    def weapon
+      @character = Character.find(params[:character_id])
+      @weapon = Item.find(params[:character][:item_ids])
+      if @weapon
+        @character.damage = @weapon.damage_dice
+        @character.save
+        redirect_to character_path(@character)
+      else 
+        redirect_to character_path(@character)
+      end
+    end
+
+    def shield
+      @character = Character.find(params[:character_id])
+      @shield = Item.find(params[:character][:item_ids])
+      if @shield
+        @character.armor_rating = @shield.armor
+        # @character.weight + @shield.weight ()
+        @character.save
+        redirect_to character_path(@character)
+      else 
+        redirect_to character_path(@character)
+      end
+    end
 
     private 
-
-    def instances
-        @weapons = Item.all.select {|item| item.damage_dice >= 4}
-        @shields = Item.all.select {|item| item.armor >= 11}
-    end
-
 
     def find_character
         @character = Character.find(params[:id])

@@ -1,13 +1,50 @@
-<
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<body>
+
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+<br><br><br><br><br>
+  <div class="w3-center">
+  <h4>The Art of Throwing Hands</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom">DUNGEONS AND DRAGONS</h1>
+  <h6>A Flatiron School Phase 2 Project Made by:</h6>
+  <h6> Emily Nguyen & Nestor Venegas</h6>
+  <br><br><br><br>
+  <h6> Please sign-in below to continue.</h6>
+    <div class="w3-padding-32">
+    </div>
+  </div>
+</header>
+
+
+<div class="w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
 <h1> DUNGEONS AND DRAGONS </h1>
 <h3> Log in to play! </h3>
-
 <%= form_for @user, url: login_path, method: :post do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %><br><br>
-  
     <%= f.label :password %>
     <%= f.password_field :password %><br><br>
-  
-    <%= f.submit "log in" %> Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+    <%= f.submit "log in" %>
+    <% # link_to(controller: 'users', action: 'new') { 'sign up' } >>>>> this code is replaced by the code below%>
   <% end %> 
+</div>
+</div>
+</div><br><br><br>
+
+
+<header class="w3-container w3-gray w3-center" style="padding:30px 16px">
+  <h1 class="w3-margin w3-jumbo">New User?</h1>
+  <p class="w3-xlarge">Create an account here</p>
+    <a href="http://localhost:3000/users/new">
+      <button class="w3-button w3-blue w3-padding-large w3-large ">Sign up</button>
+    </a>
+</header>

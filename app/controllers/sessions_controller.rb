@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  # before_action :weapon, only: [:new]
     def new
     end
 
@@ -16,4 +16,25 @@ class SessionsController < ApplicationController
       session.delete :user_id
       redirect_to '/'
     end
+
+
+    # def equip_weapon
+    # end
+    
+    # def equip_shield
+    # end
+
+    # def weapon
+    #   @character = Character.find(params[:character_id])
+    #   @weapon = Item.find(params[:character][:item_ids])
+    #   # session[:weapon] = 
+    #   redirect_to character_path(@character)
+    # end
+
+    # def shield
+    #   @character = Character.find(params[:character_id])
+    #   @shield = Item.find(params[:character][:item_ids])
+    #   # session[:shield] = @shield
+    #   redirect_to character_path(@character)
+    # end
 end

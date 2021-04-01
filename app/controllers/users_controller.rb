@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
 
     def new
+      if logged_in?
+        redirect_to controller: 'welcome', action: 'home'
+      end
+    end
+
+    def show
+      @user = User.find(session[:user_id])
     end
 
     def create
