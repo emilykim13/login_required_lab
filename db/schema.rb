@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_211419) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
+    t.integer "level", default: 1
     t.integer "damage", default: 1
     t.integer "strength"
     t.integer "dexterity"
@@ -37,11 +38,11 @@ ActiveRecord::Schema.define(version: 2021_03_30_211419) do
     t.integer "intelligence"
     t.integer "wisdom"
     t.integer "charisma"
-    t.integer "armor_rating"
+    t.integer "armor_rating", default: 10
     t.integer "max_hp"
     t.integer "current_hp"
     t.integer "temporary_hp"
-    t.integer "experience"
+    t.integer "experience", default: 0
     t.integer "surprise", default: 0
     t.integer "initiative", default: 0
     t.integer "user_id"
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_211419) do
   end
 
   create_table "encounters", force: :cascade do |t|
+    t.integer "turn", default: 0
     t.integer "character_id"
     t.integer "enemy_id"
     t.datetime "created_at", precision: 6, null: false
@@ -74,10 +76,10 @@ ActiveRecord::Schema.define(version: 2021_03_30_211419) do
     t.integer "wisdom"
     t.integer "charisma"
     t.integer "armor_rating"
-    t.integer "challenge_rating"
+    t.integer "challenge_rating", default: 0
     t.integer "max_hp"
     t.integer "current_hp"
-    t.integer "experience_value"
+    t.integer "experience_value", default: 3
     t.integer "initiative", default: 0
     t.integer "user_id"
     t.integer "campaign_id"

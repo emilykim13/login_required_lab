@@ -1,0 +1,28 @@
+<div>
+    <% if  @encounter.participant == @character%>
+        <div class='character_attack'>
+            <%= button_to "Attack #{@enemy.name}", action:'character_attack' %>
+        </div>
+        <br>
+        <div class='character_heal'>
+            <%= button_to "Heal", action:'character_heal' %>
+        </div>
+        <br>
+         <div class='character_escape'>
+            <%= button_to "Escape", action:'escape_combat' %>
+        </div>
+        <br>
+    <% else %>
+         <% if @enemy.roll_20 == 1..18 %>
+            <div class='enemy_attack'>
+                <%= button_to "Continue", action:'enemy_attack' %>
+            </div>
+            <br>
+        <% else %> 
+            <div class='enemy_heal'>
+                <%= button_to "Continue", action:'enemy_heal' %>
+            </div>
+            <br>
+        <% end %>     
+    <% end %>
+</div><br>

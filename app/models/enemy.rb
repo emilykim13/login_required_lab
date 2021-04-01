@@ -1,208 +1,79 @@
 class Enemy < ApplicationRecord
+    include Combatable
+
     belongs_to :user
     belongs_to :campaign
     # has_and_belongs_to_many :items
     has_many :encounters
     has_many :characters, through: :encounters
 
+    validates :challenge_rating, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 30 }
 
-    def alive? 
-        self.current_hp > 0
-    end
-
-    def hp_range
-        self.current_hp = self.current_hp.clamp(0, self.max_hp)
-    end
-
-    def heal(n)
-        self.current_hp += n
-        self.hp_range
-        self.save
-    end
-
-    def attack_land?(attack_roll)
-        self.armor_rating > attack_roll 
-    end
-
-    def take_damage(damage_roll)
-        self.current_hp -= damage_roll
-        self.hp_range
-        self.save
-    end
-
-    def roll_20
-        rand(1..20) 
-    end 
-
-    def roll_melee_attack
-        self.roll_20 + modifier(self.strength)
-    end
-    
-    def roll_range_attack
-        self.roll_20 + modifier(self.dexterity)
-    end
-
-    def  melee_damage(roll, dice)
-        (roll * dice) + modifier(self.strength)
-    end
-
-    def  range_damage(roll, dice)
-        (roll * dice) + modifier(self.dexterity)
-    end
-
-    def roll_initiative 
-        self.update(initiative: (self.roll_20 + modifier(self.dexterity) ) ) 
-    end
-
-    def modifier(attribute)
-        case  attribute 
-            when 1 ; -5
-            when 2..3 ; -4
-            when 4..5 ; -3
-            when 6..7 ; -2
-            when 8..9 ; -1
-            when 10..11 ; 0
-            when 12..13 ; 1
-            when 14..15 ; 2
-            when 16..17 ; 3
-            when 18..19 ; 4
-            when 20..21 ; 5
-            when 22..23 ; 6
-            when 24..25 ; 7
-            when 26..27 ; 8
-            when 28..29 ; 9
-            when 30 ; 10
+    def self.enemy_generator(name, challenge_rating, campaign, user) #can be used to generate enemies
+        case challenge_rating
+            when 0
+                Enemy.create( name: "#{name}" , strength: rand(1..15) , dexterity: rand(1..15) , constitution: rand(1..15) , intelligence: rand(1..15) , wisdom: rand(1..15) , charisma: rand(1..15) , armor_rating: rand(10..12), challenge_rating: 0, max_hp: rand(1..70) , current_hp: 70 , experience_value: 50,  campaign: campaign , user: user )
+            when 1
+                Enemy.create( name: "#{name}" , strength: rand(1..20) , dexterity: rand(1..20) , constitution: rand(1..20) , intelligence: rand(1..20) , wisdom: rand(1..20) , charisma: rand(1..20) , armor_rating: 13, challenge_rating: 1, max_hp: rand(71..85) , current_hp: 85 , experience_value: 50,  campaign: campaign , user: user )
+            when 2
+                Enemy.create( name: "#{name}" , strength: rand(1..20) , dexterity: rand(1..20) , constitution: rand(1..20) , intelligence: rand(1..20) , wisdom: rand(1..20) , charisma: rand(1..20) , armor_rating: 13, challenge_rating: 2, max_hp: rand(86..100) , current_hp: 100 , experience_value: 50,  campaign: campaign , user: user )
+            when 3
+                Enemy.create( name: "#{name}" , strength: rand(1..20) , dexterity: rand(1..20) , constitution: rand(1..20) , intelligence: rand(1..20) , wisdom: rand(1..20) , charisma: rand(1..20) , armor_rating: 13, challenge_rating: 3, max_hp: rand(101..115) , current_hp: 115 , experience_value: 50,  campaign: campaign , user: user )
+            when 4
+                Enemy.create( name: "#{name}" , strength: rand(1..20) , dexterity: rand(1..20) , constitution: rand(1..20) , intelligence: rand(1..20) , wisdom: rand(1..20) , charisma: rand(1..20) , armor_rating: 14, challenge_rating: 4, max_hp: rand(116..130) , current_hp: 130 , experience_value: 50,  campaign: campaign , user: user )
+            when 5
+                Enemy.create( name: "#{name}" , strength: rand(1..20) , dexterity: rand(1..20) , constitution: rand(1..20) , intelligence: rand(1..20) , wisdom: rand(1..20) , charisma: rand(1..20) , armor_rating: 15, challenge_rating: 5, max_hp: rand(131..145) , current_hp: 145 , experience_value: 50,  campaign: campaign , user: user )
+            when 6
+                Enemy.create( name: "#{name}" , strength: rand(1..20) , dexterity: rand(1..20) , constitution: rand(1..20) , intelligence: rand(1..20) , wisdom: rand(1..20) , charisma: rand(1..20) , armor_rating: 15, challenge_rating: 6, max_hp: rand(146..160) , current_hp: 160 , experience_value: 50,  campaign: campaign , user: user )
+            when 7
+                Enemy.create( name: "#{name}" , strength: rand(5..25) , dexterity: rand(5..25) , constitution: rand(5..25) , intelligence: rand(5..25), wisdom: rand(5..25) , charisma: rand(5..25) , armor_rating: 15, challenge_rating: 7, max_hp: rand(161..175) , current_hp: 175 , experience_value: 50,  campaign: campaign , user: user )
+            when 8
+                Enemy.create( name: "#{name}" , strength: rand(5..25) , dexterity: rand(5..25) , constitution: rand(5..25) , intelligence: rand(5..25) , wisdom: rand(5..25) , charisma: rand(5..25) , armor_rating: 16, challenge_rating: 8, max_hp: rand(176..190) , current_hp: 190 , experience_value: 50,  campaign: campaign , user: user )
+            when 9
+                Enemy.create( name: "#{name}" , strength: rand(5..25) , dexterity: rand(5..25) , constitution: rand(5..25) , intelligence: rand(5..25) , wisdom: rand(5..25) , charisma: rand(5..25) , armor_rating: 16, challenge_rating: 9, max_hp: rand(191..205) , current_hp: 205 , experience_value: 50,  campaign: campaign , user: user )
+            when 10
+                Enemy.create( name: "#{name}" , strength: rand(5..25) , dexterity: rand(5..25) , constitution: rand(5..25) , intelligence: rand(5..25) , wisdom: rand(5..25) , charisma: rand(5..25) , armor_rating: 17, challenge_rating: 10, max_hp: rand(206..220) , current_hp: 220 , experience_value: 50,  campaign: campaign , user: user )
+            when 11
+                Enemy.create( name: "#{name}" , strength: rand(5..25) , dexterity: rand(5..25) , constitution: rand(5..25) , intelligence: rand(5..25) , wisdom: rand(5..25) , charisma: rand(5..25) , armor_rating: 17, challenge_rating: 11, max_hp: rand(221..235) , current_hp: 235 , experience_value: 50,  campaign: campaign , user: user )
+            when 12
+                Enemy.create( name: "#{name}" , strength: rand(5..25) , dexterity: rand(5..25) , constitution: rand(5..25) , intelligence: rand(5..25) , wisdom: rand(5..25) , charisma: rand(5..25) , armor_rating: 17, challenge_rating: 12, max_hp: rand(236..250) , current_hp: 250 , experience_value: 50,  campaign: campaign , user: user )
+            when 13
+                Enemy.create( name: "#{name}" , strength: rand(10..30) , dexterity: rand(10..30) , constitution: rand(10..30) , intelligence: rand(10..30) , wisdom: rand(10..30) , charisma: rand(10..30) , armor_rating: 18, challenge_rating: 13, max_hp: rand(251..265) , current_hp: 265 , experience_value: 50,  campaign: campaign , user: user )
+            when 14
+                Enemy.create( name: "#{name}" , strength: rand(10..30) , dexterity: rand(10..30) , constitution: rand(10..30) , intelligence: rand(10..30) , wisdom: rand(10..30) , charisma: rand(10..30) , armor_rating: 18, challenge_rating: 14, max_hp: rand(266..280) , current_hp: 280 , experience_value: 50,  campaign: campaign , user: user )
+            when 15
+                Enemy.create( name: "#{name}" , strength: rand(10..30) , dexterity: rand(10..30) , constitution: rand(10..30) , intelligence: rand(10..30) , wisdom: rand(10..30) , charisma: rand(10..30) , armor_rating: 18, challenge_rating: 15, max_hp: rand(281..295) , current_hp: 295 , experience_value: 50,  campaign: campaign , user: user )
+            when 16
+                Enemy.create( name: "#{name}" , strength: rand(10..30) , dexterity: rand(10..30) , constitution: rand(10..30) , intelligence: rand(10..30) , wisdom: rand(10..30) , charisma: rand(10..30) , armor_rating: 18, challenge_rating: 16, max_hp: rand(296..310) , current_hp: 310 , experience_value: 50,  campaign: campaign , user: user )
+            when 17
+                Enemy.create( name: "#{name}" , strength: rand(10..30) , dexterity: rand(10..30) , constitution: rand(10..30) , intelligence: rand(10..30) , wisdom: rand(10..30) , charisma: rand(10..30) , armor_rating: 19, challenge_rating: 17, max_hp: rand(311..325) , current_hp: 325 , experience_value: 50,  campaign: campaign , user: user )
+            when 18
+                Enemy.create( name: "#{name}" , strength: rand(10..30) , dexterity: rand(10..30) , constitution: rand(10..30) , intelligence: rand(10..30) , wisdom: rand(10..30) , charisma: rand(10..30) , armor_rating: 19, challenge_rating: 18, max_hp: rand(326..340) , current_hp: 340 , experience_value: 50,  campaign: campaign , user: user )
+            when 19
+                Enemy.create( name: "#{name}" , strength: rand(15..35) , dexterity: rand(15..35) , constitution: rand(15..35) , intelligence: rand(15..35) , wisdom: rand(15..35) , charisma: rand(15..35) , armor_rating: 19, challenge_rating: 19, max_hp: rand(341..355) , current_hp: 355 , experience_value: 50,  campaign: campaign , user: user )
+            when 20
+                Enemy.create( name: "#{name}" , strength: rand(15..35) , dexterity: rand(15..35) , constitution: rand(15..35) , intelligence: rand(15..35) , wisdom: rand(15..35) , charisma: rand(15..35) , armor_rating: 20, challenge_rating: 20, max_hp: rand(356..400) , current_hp: 400 , experience_value: 50,  campaign: campaign , user: user )
+            when 21
+                Enemy.create( name: "#{name}" , strength: rand(15..35) , dexterity: rand(15..35) , constitution: rand(15..35) , intelligence: rand(15..35) , wisdom: rand(15..35) , charisma: rand(15..35) , armor_rating: 20, challenge_rating: 21, max_hp: rand(401..445) , current_hp: 445 , experience_value: 50,  campaign: campaign , user: user )
+            when 22
+                Enemy.create( name: "#{name}" , strength: rand(15..35) , dexterity: rand(15..35) , constitution: rand(15..35) , intelligence: rand(15..35) , wisdom: rand(15..35) , charisma: rand(15..35) , armor_rating: 21, challenge_rating: 22, max_hp: rand(446..490) , current_hp: 490 , experience_value: 50,  campaign: campaign , user: user )
+            when 23
+                Enemy.create( name: "#{name}" , strength: rand(15..35) , dexterity: rand(15..35) , constitution: rand(15..35) , intelligence: rand(15..35) , wisdom: rand(15..35) , charisma: rand(15..35) , armor_rating: 21, challenge_rating: 23, max_hp: rand(491..535) , current_hp: 535 , experience_value: 50,  campaign: campaign , user: user )
+            when 24
+                Enemy.create( name: "#{name}" , strength: rand(15..35) , dexterity: rand(15..35) , constitution: rand(15..35) , intelligence: rand(15..35) , wisdom: rand(15..35) , charisma: rand(15..35) , armor_rating: 22, challenge_rating: 24, max_hp: rand(536..580) , current_hp: 580 , experience_value: 50,  campaign: campaign , user: user )
+            when 25
+                Enemy.create( name: "#{name}" , strength: rand(20..40) , dexterity: rand(20..40) , constitution: rand(20..40) , intelligence: rand(20..40) , wisdom: rand(20..40) , charisma: rand(20..40) , armor_rating: 22, challenge_rating: 25, max_hp: rand(581..625) , current_hp: 625 , experience_value: 50,  campaign: campaign , user: user )
+            when 26
+                Enemy.create( name: "#{name}" , strength: rand(20..40) , dexterity: rand(20..40) , constitution: rand(20..40) , intelligence: rand(20..40) , wisdom: rand(20..40) , charisma: rand(20..40) , armor_rating: 23, challenge_rating: 26, max_hp: rand(626..689) , current_hp: 689 , experience_value: 50,  campaign: campaign , user: user )
+            when 27
+                Enemy.create( name: "#{name}" , strength: rand(20..40) , dexterity: rand(20..40) , constitution: rand(20..40) , intelligence: rand(20..40) , wisdom: rand(20..40) , charisma: rand(20..40) , armor_rating: 23, challenge_rating: 27, max_hp: rand(690..759) , current_hp: 759 , experience_value: 50,  campaign: campaign , user: user )
+            when 28
+                Enemy.create( name: "#{name}" , strength: rand(20..40) , dexterity: rand(20..40) , constitution: rand(20..40) , intelligence: rand(20..40) , wisdom: rand(20..40) , charisma: rand(20..40) , armor_rating: 24, challenge_rating: 28, max_hp: rand(760..836) , current_hp: 836 , experience_value: 50,  campaign: campaign , user: user )
+            when 29
+                Enemy.create( name: "#{name}" , strength: rand(20..40) , dexterity: rand(20..40) , constitution: rand(20..40) , intelligence: rand(20..40) , wisdom: rand(20..40) , charisma: rand(20..40) , armor_rating: 24, challenge_rating: 29, max_hp: rand(837..921) , current_hp: 921 , experience_value: 50,  campaign: campaign , user: user )
+            when 30
+                Enemy.create( name: "#{name}" , strength: rand(20..40) , dexterity: rand(20..40) , constitution: rand(20..40) , intelligence: rand(20..40) , wisdom: rand(20..40) , charisma: rand(20..40) , armor_rating: 25, challenge_rating: 30, max_hp: rand(922..1015) , current_hp: 1015 , experience_value: 50,  campaign: campaign , user: user )
+            end
         end
-    end
 
-#strength stats add and subtract; works
-    def strength_range
-        self.strength = self.strength.clamp(0, 20)
     end
-    
-    def strength_up(n)
-        self.strength += n 
-        self.strength_range
-        self.save
-    end
-
-    def strength_down(n)
-        self.strength -= n 
-        self.strength_range
-        self.save
-    end
-
-#dexterity stats add and subtract; works
-    def dexterity_range
-        self.dexterity = self.dexterity.clamp(0, 20)
-    end
-    
-    def dexterity_up(n)
-        self.dexterity += n 
-        self.dexterity_range
-        self.save
-    end
-
-    def dexterity_down(n)
-        self.dexterity -= n 
-        self.dexterity_range
-        self.save
-    end
-
-# constitution stat add and subtract; works
-    def constitution_range
-        self.constitution = self.constitution.clamp(0, 20)
-    end
-
-    def constitution_up(n)
-        self.constitution += n 
-        self.constitution_range
-        self.save
-    end
-
-    def constitution_down(n)
-        self.constitution -= n 
-        self.constitution_range
-        self.save
-    end
-
-# intelligence stat add and subtract; works
-    def intelligence_range
-        self.intelligence = self.intelligence.clamp(0, 20)
-    end
-
-    def intelligence_up(n)
-        self.intelligence += n 
-        self.intelligence_range
-        self.save
-    end
-
-    def intelligence_down(n)
-        self.intelligence -= n 
-        self.intelligence_range
-        self.save
-    end
-# wisdom stat add and subtract; works
-    def wisdom_range
-        self.wisdom = self.wisdom.clamp(0, 20)
-    end
-
-    def wisdom_up(n)
-        self.wisdom += n 
-        self.wisdom_range
-        self.save
-    end
-
-    def wisdom_down(n)
-        self.wisdom -= n 
-        self.wisdom_range
-        self.save
-    end
-# charisma stat add and subtract
-    def charisma_range
-        self.charisma = self.charisma.clamp(0, 20)
-    end
-
-    def charisma_up(n)
-        self.charisma += n 
-        self.charisma_range
-        self.save
-    end
-
-    def charisma_down(n)
-        self.charisma -= n 
-        self.charisma_range
-        self.save
-    end
-
-# damage stats add and subtract
-    def damage_range
-        self.damage = self.damage.clamp(4, 100)
-    end
-
-    def damage_up(n)
-        self.damage += n 
-        self.damage_range
-        self.save
-    end
-
-    def damage_down(n)
-        self.damage -= n 
-        self.damage_range
-        self.save
-    end
-    
-    # t.integer :strength
-    # t.integer :dexterity
-    # t.integer :constitution
-    # t.integer :intelligence
-    # t.integer :wisdom
-    # t.integer :charisma
-    # t.integer :armor_rating
-    # t.integer :challenge_rating
-    # t.integer :max_hp
-    # t.integer :current_hp
-    # t.integer :experience_value
-
-
-end

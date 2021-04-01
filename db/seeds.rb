@@ -1,4 +1,5 @@
 CharacterItem.destroy_all
+Encounter.destroy_all
 Item.destroy_all
 Enemy.destroy_all
 Dialogue.destroy_all

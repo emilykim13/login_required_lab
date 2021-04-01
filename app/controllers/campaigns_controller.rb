@@ -5,5 +5,9 @@ class CampaignsController < ApplicationController
         @dialogue = Dialogue.new(params)
         @campaign.dialogue << @dialogue.sentence
     end
+
+    def game_over 
+
+    end
     
 end

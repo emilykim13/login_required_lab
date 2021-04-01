@@ -10,10 +10,10 @@ class CreateEnemies < ActiveRecord::Migration[6.1]
       t.integer :wisdom
       t.integer :charisma
       t.integer :armor_rating
-      t.integer :challenge_rating
+      t.integer :challenge_rating, default: 0
       t.integer :max_hp
       t.integer :current_hp
-      t.integer :experience_value
+      t.integer :experience_value, default: 3
       t.integer :initiative, default: 0
       t.integer :user_id
       t.integer :campaign_id

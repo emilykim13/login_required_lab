@@ -4,6 +4,10 @@ class CharactersController < ApplicationController
     # before_action :instances, only: [:show, :edit, :update, :destroy]
     # before_action :weapon, only: [:update, :edit]
 
+    def show 
+        @character = Character.find(params[:id])
+    end
+
     def index
         @characters = Character.all
         @user = User.find(session[:user_id])
