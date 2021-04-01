@@ -1,8 +1,35 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+<br><br><br><br><br>
+  <div class="w3-center">
+  <h4>The Art of Throwing Hands</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom">DUNGEONS AND DRAGONS</h1>
+  <h6>A Flatiron School Phase 2 Project Made by:</h6>
+  <h6> Emily Nguyen & Nestor Venegas</h6>
+  <br><br><br><br>
+  <h6>An enemy has appeared! Deal with it.</h6>
+    <div class="w3-padding-32">
+    </div>
+  </div>
+</header>
+
+<div class="w3-padding-128 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
 <br>
 <br>
     <div class='Combat_title'>
         <h3> 
-            <%= @encounter.participant.name %>'s Turn! 
+            <strong><%= @encounter.participant.name %>'s Turn! </strong>
         <h3>
     </div>
 <br>
@@ -13,7 +40,6 @@
 <br>
 <br>
     <%= render 'combat_options' %>
-
-
-
-
+</div>
+</div>
+</div>
